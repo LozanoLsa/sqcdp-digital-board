@@ -77,13 +77,15 @@ Each pillar gets a **green / yellow / red** status every day. The pattern of col
 Daily Management Meeting/
 │
 ├── index.html              ← The page itself. Open this in a browser to launch the app.
+├── START-DASHBOARD.bat     ← Double-click launcher for plant PCs (Windows). Starts the server automatically.
 │
 ├── css/
 │   ├── variables.css       ← All colors, fonts, spacing — your design tokens
 │   ├── layout.css          ← Overall page structure and KPI card styles
-│   ├── rings.css           ← The SQCDP donut ring calendars
+│   ├── letters.css         ← The SQCDP donut ring calendars
 │   ├── charts.css          ← Chart card styles (rows 1 and 2)
 │   ├── modal.css           ← The data-entry popup window
+│   ├── components.css      ← Shared UI components (buttons, inputs, badges)
 │   └── sidebar.css         ← The KPI Targets settings panel
 │
 ├── js/
@@ -126,9 +128,26 @@ Nothing goes to the internet. Everything stays on the local machine.
 ### What you need
 
 - A modern web browser: **Google Chrome** (recommended), Edge, Firefox, or Safari
-- A web server — the simplest option is one of these:
+- A web server — pick the option that fits your situation below
 
-**Option A — VS Code (recommended for OpEx practitioners)**
+---
+
+### ⚡ Option 0 — START-DASHBOARD.bat (easiest — for plant PCs on Windows)
+
+This is the file you hand to your IT team. No commands. No configuration. Just:
+
+1. Copy the project folder to the plant PC
+2. Make sure **Python** or **Node.js** is installed (Python is free from [python.org](https://www.python.org/downloads/))
+3. **Double-click `START-DASHBOARD.bat`**
+4. The dashboard opens in the browser automatically at `http://localhost:3000`
+
+The script auto-detects which runtime is available. If neither is found, it shows a clear message with download links.
+
+> 🖥️ **For TV / monitor display:** connect the PC to the screen via HDMI, open Chrome in fullscreen (F11), navigate to `http://localhost:3000`. Done.
+
+---
+
+**Option A — VS Code (recommended for OpEx practitioners working from their laptop)**
 
 1. Install [Visual Studio Code](https://code.visualstudio.com/) — free
 2. Install the **Live Server** extension (search "Live Server" by Ritwick Dey inside VS Code)
@@ -160,7 +179,7 @@ python -m http.server 3000
 Open `http://localhost:3000`.
 
 > ⚠️ **Why can't I just double-click `index.html`?**
-> Modern browsers block local ES Modules (JavaScript files that import each other) when opened directly from the file system for security reasons. You need a local web server — any of the three options above work fine and take under 5 minutes to set up.
+> Modern browsers block local ES Modules (JavaScript files that import each other) when opened directly from the file system for security reasons. You need a local web server — any of the options above work fine and take under 5 minutes to set up.
 
 ---
 
@@ -187,18 +206,19 @@ Best for: a dedicated PC or industrial panel PC connected to a plant TV.
 
 **Steps:**
 1. Copy the project folder to the plant PC (USB, network share, or Git clone)
-2. Install Node.js (LTS version) from nodejs.org
-3. Install `serve`: `npm install -g serve`
-4. Create a startup script `start-dms.bat`:
-   ```bat
-   @echo off
-   cd "C:\DMS\Daily Management Meeting"
-   start serve . -p 3000
-   timeout /t 3
-   start chrome --kiosk http://localhost:3000
-   ```
-5. Add this script to Windows Task Scheduler to run at startup
-6. Chrome opens in fullscreen kiosk mode automatically
+2. Install **Python** (free, [python.org](https://www.python.org/downloads/)) or Node.js (LTS, [nodejs.org](https://nodejs.org/))
+3. **Double-click `START-DASHBOARD.bat`** — it starts the server and opens the browser automatically
+4. *(Optional)* Add `START-DASHBOARD.bat` to Windows Task Scheduler to launch at startup
+
+**For kiosk / TV mode (always-on display):**
+```bat
+@echo off
+cd "C:\DMS\Daily Management Meeting"
+start python -m http.server 3000
+timeout /t 3 /nobreak >nul
+start chrome --kiosk http://localhost:3000
+```
+Save as `start-kiosk.bat` and add to Task Scheduler → "Run at logon".
 
 **To display on a TV:** connect the PC to the TV via HDMI. Set Chrome to open on the TV display.
 
