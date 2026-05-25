@@ -1,0 +1,116 @@
+/* ============================================
+   DMS Dashboard - Design Tokens (Light Theme)
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  /* ── Typography ── */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-size-xs: 0.65rem;
+  --font-size-sm: 0.8rem;
+  --font-size-base: 0.95rem;
+  --font-size-lg: 1.15rem;
+  --font-size-xl: 1.5rem;
+  --font-size-2xl: 2rem;
+  --font-size-3xl: 2.5rem;
+
+  /* ── Background & Surface ── */
+  --bg-primary: #f0f2f5;
+  --bg-surface: #ffffff;
+  --bg-surface-hover: #f8f9fa;
+  --bg-surface-alt: #f5f6f8;
+
+  /* ── Text ── */
+  --text-primary: #1a1a2e;
+  --text-secondary: #5a5f7a;
+  --text-muted: #9ca3af;
+  --text-on-color: #ffffff;
+
+  /* ── Borders & Shadows ── */
+  --border-color: #e2e5ea;
+  --border-radius-sm: 6px;
+  --border-radius-md: 10px;
+  --border-radius-lg: 16px;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.12);
+  --shadow-xl: 0 12px 40px rgba(0, 0, 0, 0.16);
+
+  /* ── Status Colors (Day Cells) ── */
+  --status-green: #22c55e;
+  --status-green-bg: #dcfce7;
+  --status-green-border: #86efac;
+  --status-yellow: #eab308;
+  --status-yellow-bg: #fef9c3;
+  --status-yellow-border: #fde047;
+  --status-red: #ef4444;
+  --status-red-bg: #fee2e2;
+  --status-red-border: #fca5a5;
+  --status-grey: #d1d5db;
+  --status-grey-bg: #f3f4f6;
+
+  /* ── Pillar Accent Colors ── */
+  --pillar-safety: #3b82f6;
+  --pillar-safety-bg: #eff6ff;
+  --pillar-safety-light: #bfdbfe;
+  --pillar-quality: #22c55e;
+  --pillar-quality-bg: #f0fdf4;
+  --pillar-quality-light: #bbf7d0;
+  --pillar-cost: #f97316;
+  --pillar-cost-bg: #fff7ed;
+  --pillar-cost-light: #fed7aa;
+  --pillar-delivery: #a855f7;
+  --pillar-delivery-bg: #faf5ff;
+  --pillar-delivery-light: #d8b4fe;
+  --pillar-people: #06b6d4;
+  --pillar-people-bg: #ecfeff;
+  --pillar-people-light: #a5f3fc;
+
+  /* ── Spacing ── */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+
+  /* ── Transitions ── */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 400ms ease;
+
+  /* ── Letter Cell Size ── */
+  --cell-size: 32px;
+  --cell-gap: 3px;
+}
+
+/* ── Responsive overrides for large screens (TV) ── */
+@media (min-width: 1920px) {
+  :root {
+    --cell-size: 42px;
+    --cell-gap: 4px;
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.9rem;
+    --font-size-base: 1.05rem;
+    --font-size-lg: 1.3rem;
+    --font-size-xl: 1.75rem;
+    --font-size-2xl: 2.5rem;
+  }
+}
+
+@media (min-width: 2560px) {
+  :root {
+    --cell-size: 56px;
+    --cell-gap: 5px;
+    --font-size-xs: 0.9rem;
+    --font-size-sm: 1.05rem;
+    --font-size-base: 1.2rem;
+    --font-size-lg: 1.5rem;
+    --font-size-xl: 2rem;
+    --font-size-2xl: 3rem;
+  }
+}

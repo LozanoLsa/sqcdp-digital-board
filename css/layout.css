@@ -1,0 +1,282 @@
+/* ============================================
+   DMS Dashboard - Main Layout
+   ============================================
+   Optimized for laptop screens (1366×768+).
+   All content visible without scrolling.
+   ============================================ */
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Dashboard Header (compact) ── */
+.dashboard-header {
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border-color);
+  padding: 8px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow-sm);
+}
+
+.dashboard-header__left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.dashboard-header__logo {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, var(--pillar-safety), var(--pillar-delivery));
+  border-radius: var(--border-radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 800;
+  font-size: 1rem;
+}
+
+.dashboard-header__title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  background: linear-gradient(135deg, var(--text-primary), var(--text-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.dashboard-header__subtitle {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.dashboard-header__right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ── Month Selector ── */
+.month-selector {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--bg-surface-alt);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  padding: 4px 10px;
+}
+
+.month-selector__btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 2px;
+  border-radius: var(--border-radius-sm);
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.month-selector__btn:hover {
+  background: var(--border-color);
+  color: var(--text-primary);
+}
+
+.month-selector__label {
+  font-weight: 600;
+  font-size: 0.85rem;
+  min-width: 120px;
+  text-align: center;
+}
+
+/* ── Main Content ── */
+.dashboard-main {
+  padding: 12px 16px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow: hidden;
+}
+
+/* ── Ring Cards Grid — 5 columns on laptop ── */
+.letters-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+}
+
+/* ── Legend ── */
+.legend {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+/* ── KPI Cards — same 5-column grid as the chart rows ── */
+.kpi-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.kpi-pillar-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 10px 12px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: var(--shadow-sm);
+  min-width: 0;
+  overflow: hidden;
+}
+
+.kpi-item {
+  flex: 1;
+  text-align: center;
+  padding: 4px 2px;
+  min-width: 0;
+}
+
+.kpi-item__value {
+  font-size: 1.3rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.kpi-item__label {
+  font-size: 0.6rem;
+  color: var(--text-secondary);
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── Summary Bar — 4 equal columns ── */
+.summary-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.summary-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  padding: 12px 16px;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-base);
+}
+
+.summary-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.summary-card__value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.summary-card__label {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+/* ── Footer ── */
+.dashboard-footer {
+  text-align: center;
+  padding: 10px 24px;
+  color: var(--text-muted);
+  font-size: 0.72rem;
+}
+
+/* ═══════════════════════════════════════════
+   Responsive: medium laptops (1200-1366px)
+   ═══════════════════════════════════════════ */
+@media (max-width: 1366px) {
+  .letters-grid {
+    gap: 10px;
+  }
+  .summary-bar {
+    gap: 10px;
+  }
+  .dashboard-main {
+    padding: 12px 14px;
+    gap: 10px;
+  }
+}
+
+/* ═══════════════════════════════════════════
+   Responsive: small screens / tablets
+   ═══════════════════════════════════════════ */
+@media (max-width: 1100px) {
+  .letters-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .letters-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .summary-bar {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .dashboard-header {
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px 16px;
+  }
+}
+
+/* ═══════════════════════════════════════════
+   Responsive: large / TV screens
+   ═══════════════════════════════════════════ */
+@media (min-width: 1920px) {
+  .dashboard-main {
+    max-width: 1800px;
+    padding: 24px 32px;
+    gap: 20px;
+  }
+  .summary-card__value {
+    font-size: 2.2rem;
+  }
+}

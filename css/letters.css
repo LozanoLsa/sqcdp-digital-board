@@ -1,0 +1,177 @@
+/* ============================================
+   DMS Dashboard - Ring Calendar Styles
+   ============================================
+   Circular donut-ring calendars with centered
+   SQCDP letters. Premium glassmorphism design.
+   ============================================ */
+
+/* ── Letter Card Container ── */
+.letter-card {
+  border-radius: 16px;
+  padding: 14px 14px 10px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  transition: all 250ms ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  border: none;
+}
+
+.letter-card:hover {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+  transform: translateY(-3px);
+}
+
+/* ── Pillar card backgrounds ── */
+.letter-card[data-pillar="safety"] {
+  background: linear-gradient(145deg, #27ae60, #2ecc71);
+}
+.letter-card[data-pillar="quality"] {
+  background: linear-gradient(145deg, #2980b9, #45b7d1);
+}
+.letter-card[data-pillar="cost"] {
+  background: linear-gradient(145deg, #e67e22, #f5a623);
+}
+.letter-card[data-pillar="delivery"] {
+  background: linear-gradient(145deg, #2471a3, #3498db);
+}
+.letter-card[data-pillar="people"] {
+  background: linear-gradient(145deg, #7d3c98, #a569bd);
+}
+
+/* ── Subtle radial glow ── */
+.letter-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -30%;
+  width: 160%;
+  height: 160%;
+  background: radial-gradient(
+    ellipse at 35% 25%,
+    rgba(255, 255, 255, 0.12) 0%,
+    transparent 55%
+  );
+  pointer-events: none;
+}
+
+/* ── Header ── */
+.letter-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 6px;
+  position: relative;
+  z-index: 2;
+}
+
+.letter-card__title-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.letter-card__title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  line-height: 1.2;
+}
+
+.letter-card__subtitle {
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.65);
+  font-weight: 400;
+  margin-top: 2px;
+}
+
+.letter-card__score {
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 3px 12px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  backdrop-filter: blur(4px);
+  flex-shrink: 0;
+}
+
+.letter-card__score.badge--green  { background: rgba(46, 204, 113, 0.45); }
+.letter-card__score.badge--yellow { background: rgba(241, 196, 15, 0.5); }
+.letter-card__score.badge--red    { background: rgba(231, 76, 60, 0.5); }
+
+/* ── Ring Wrapper ── */
+.ring-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 200px;
+  aspect-ratio: 1 / 1;
+  margin: 0 auto;
+}
+
+.ring-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* ── Segment Styling ── */
+.ring-segment__path {
+  stroke: rgba(255, 255, 255, 0.15);
+  stroke-width: 1;
+  transition: all 180ms ease;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+}
+
+.ring-segment__path:hover {
+  filter: brightness(1.15) drop-shadow(0 3px 8px rgba(0, 0, 0, 0.25));
+  stroke: rgba(255, 255, 255, 0.5);
+  stroke-width: 2;
+}
+
+.ring-segment__path--nodata {
+  stroke: rgba(255, 255, 255, 0.25);
+  stroke-dasharray: 4 3;
+}
+
+.ring-segment__path--grey {
+  stroke: none;
+}
+
+/* ── Day Number Labels ── */
+.ring-segment__label {
+  font-family: 'Inter', sans-serif;
+  font-size: 8px;
+  font-weight: 600;
+  fill: #ffffff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  pointer-events: none;
+}
+
+/* ── Center Letter ── */
+.ring-center-letter {
+  font-family: 'Inter', sans-serif;
+  font-size: 58px;
+  font-weight: 800;
+  fill: rgba(255, 255, 255, 0.3);
+  pointer-events: none;
+}
+
+/* ── Pulse Animation ── */
+@keyframes segmentPulse {
+  0%   { filter: brightness(1); }
+  50%  { filter: brightness(1.5); }
+  100% { filter: brightness(1); }
+}
+
+.ring-segment--updated {
+  animation: segmentPulse 0.6s ease-out;
+}
+
+/* ── Month label (legacy compat, hidden since subtitle handles it) ── */
+.letter-card__month {
+  display: none;
+}

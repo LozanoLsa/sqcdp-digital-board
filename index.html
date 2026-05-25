@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Daily Management System Dashboard - SQCDP visual management boards for daily plant operations">
+  <title>DMS Dashboard — Daily Management System</title>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/letters.css">
+  <link rel="stylesheet" href="css/modal.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/charts.css">
+  <link rel="stylesheet" href="css/sidebar.css">
+
+  <!-- SheetJS for Excel export (CDN) -->
+  <script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
+
+  <!-- Chart.js for pillar charts (CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📋</text></svg>">
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════ -->
+  <!-- HEADER                              -->
+  <!-- ═══════════════════════════════════ -->
+  <header class="dashboard-header">
+    <div class="dashboard-header__left">
+      <div class="dashboard-header__logo">D</div>
+      <div>
+        <h1 class="dashboard-header__title">Daily Management System</h1>
+        <p class="dashboard-header__subtitle" data-i18n="subtitle">SQCDP Visual Management Board</p>
+      </div>
+    </div>
+
+    <div class="dashboard-header__right">
+      <!-- Month Navigation -->
+      <div class="month-selector">
+        <button class="month-selector__btn" id="month-prev" data-i18n-title="navPrev" title="Previous month">◀</button>
+        <span class="month-selector__label" id="month-label"></span>
+        <button class="month-selector__btn" id="month-next" data-i18n-title="navNext" title="Next month">▶</button>
+      </div>
+
+      <!-- Action Buttons -->
+      <button class="btn btn--settings" id="btn-settings" title="KPI Targets">⚙️</button>
+      <button class="btn btn--lang" id="btn-lang" title="Switch language">EN</button>
+      <button class="btn btn--ghost" id="btn-demo" data-i18n-title="btnDemoTitle" title="Load demo data">
+        🔬 Demo
+      </button>
+      <button class="btn btn--primary" id="btn-export" data-i18n-title="btnExportTitle" title="Export to Excel">
+        <span data-i18n="btnExport">📥 Export</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════ -->
+  <!-- MAIN CONTENT                        -->
+  <!-- ═══════════════════════════════════ -->
+  <main class="dashboard-main">
+
+    <!-- Letter Calendars Grid -->
+    <section class="letters-grid" id="letters-grid" aria-label="SQCDP Calendars">
+      <!-- Ring cards will be rendered here by JS -->
+    </section>
+
+    <!-- Primary Charts Row (row 1) -->
+    <section class="charts-grid" id="charts-grid-primary" aria-label="SQCDP Charts Primary">
+      <!-- Primary chart cards rendered by JS -->
+    </section>
+
+    <!-- KPI Summary Cards Row — between chart rows -->
+    <section class="kpi-cards-grid" id="kpi-cards-grid" aria-label="SQCDP KPIs">
+      <!-- KPI cards will be rendered here by JS -->
+    </section>
+
+    <!-- Secondary Charts Row (row 2) -->
+    <section class="charts-grid" id="charts-grid-secondary" aria-label="SQCDP Charts Secondary">
+      <!-- Secondary chart cards rendered by JS -->
+    </section>
+
+    <!-- Legend -->
+    <div class="legend" aria-label="Color legend">
+      <div class="legend__item">
+        <div class="legend__dot legend__dot--green"></div>
+        <span data-i18n="legendOnTarget">On Target</span>
+      </div>
+      <div class="legend__item">
+        <div class="legend__dot legend__dot--yellow"></div>
+        <span data-i18n="legendAlert">Alert</span>
+      </div>
+      <div class="legend__item">
+        <div class="legend__dot legend__dot--red"></div>
+        <span data-i18n="legendOffTarget">Off Target</span>
+      </div>
+      <div class="legend__item">
+        <div class="legend__dot legend__dot--grey"></div>
+        <span data-i18n="legendNoData">No Data</span>
+      </div>
+    </div>
+
+    <!-- Summary Cards -->
+    <section class="summary-bar" aria-label="Month summary">
+      <div class="summary-card">
+        <div class="summary-card__value" id="summary-overall" style="color: var(--status-green);">—</div>
+        <div class="summary-card__label" data-i18n="summaryOverall">Overall Score</div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-card__value" id="summary-green" style="color: var(--status-green);">0</div>
+        <div class="summary-card__label" data-i18n="summaryGreen">🟩 Days On Target</div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-card__value" id="summary-yellow" style="color: var(--status-yellow);">0</div>
+        <div class="summary-card__label" data-i18n="summaryYellow">🟨 Days on Alert</div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-card__value" id="summary-red" style="color: var(--status-red);">0</div>
+        <div class="summary-card__label" data-i18n="summaryRed">🟥 Days Off Target</div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══════════════════════════════════ -->
+  <!-- FOOTER                              -->
+  <!-- ═══════════════════════════════════ -->
+  <footer class="dashboard-footer">
+    <p data-i18n="footer">DMS Dashboard © 2019 · Click any cell to enter data · Data saved locally in your browser</p>
+  </footer>
+
+  <!-- App Script (ES Modules) -->
+  <script type="module" src="js/app.js"></script>
+
+</body>
+</html>
