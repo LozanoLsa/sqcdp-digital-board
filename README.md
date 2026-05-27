@@ -59,12 +59,13 @@ Each pillar gets a **green / yellow / red** status every day. The pattern of col
 
 ## 🖥️ Screenshots
 
-> *(Add your own screenshot here after deploying — run the dashboard, press F12 → right-click the page → Save as image, or use Lightshot / Snipping Tool)*
+**Full dashboard — SQCDP ring calendars + KPI trend charts + live KPI cards**
 
-```
-[ Screenshot: Ring calendars showing 5 pillars with green/yellow/red day segments ]
-[ Screenshot: Chart rows 1 and 2 with KPI cards in between                       ]
-```
+![DMS Dashboard Overview](assets/screenshot-overview.png)
+
+**Ring calendars close-up — 31-day color-coded segments per pillar**
+
+![SQCDP Ring Calendars](assets/screenshot-rings.png)
 
 ---
 
